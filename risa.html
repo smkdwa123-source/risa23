@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil Sistem Operasi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .profile-box {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    #osTitle {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Profil Sistem Operasi</h1>
+    
+    <label for="osSelect">Pilih Sistem Operasi:</label>
+    <select id="osSelect" onchange="showProfile()">
+      <option value="">-- Pilih OS --</option>
+      <option value="windows">Windows</option>
+      <option value="linux">Linux</option>
+      <option value="android">Android</option>
+      <option value="macos">macOS</option>
+    </select>
+
+    <div id="profileBox" class="profile-box">
+      <h2 id="osTitle">Profil akan tampil di sini</h2>
+      <p id="osDesc"></p>
+    </div>
+  </div>
+
+  <script>
+    function showProfile() {
+      const os = document.getElementById("osSelect").value;
+      const title = document.getElementById("osTitle");
+      const desc = document.getElementById("osDesc");
+
+      const profile = {
+        windows: {
+          title: "Windows",
+          desc: "Windows adalah sistem operasi buatan Microsoft, populer di kalangan pengguna PC dengan antarmuka grafis yang user-friendly."
+        },
+        linux: {
+          title: "Linux",
+          desc: "Linux adalah sistem operasi open-source yang banyak digunakan di server dan komputer pribadi. Tersedia dalam berbagai distribusi seperti Ubuntu, Fedora, dan Debian."
+        },
+        android: {
+          title: "Android",
+          desc: "Android adalah sistem operasi berbasis Linux yang dikembangkan oleh Google untuk perangkat mobile seperti smartphone dan tablet."
+        },
+        macos: {
+          title: "macOS",
+          desc: "macOS adalah sistem operasi yang dikembangkan oleh Apple, eksklusif untuk komputer Mac, dengan antarmuka yang elegan dan stabil."
+        }
+      };
+
+      if (profile[os]) {
+        title.textContent = profile[os].title;
+        desc.textContent = profile[os].desc;
+      } else {
+        title.textContent = "Profil akan tampil di sini";
+        desc.textContent = "";
+      }
+    }
+  </script>
+</body>
+</html>
